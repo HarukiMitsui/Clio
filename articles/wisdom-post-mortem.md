@@ -13,8 +13,18 @@ AntigravityとClaude Codeを組み合わせた「Dual-Engine Studio（完全自�
 
 ## WISDOM構想：Dual-Engine Studioとは
 
-![](/images/wisdom_dual_engine.png)
-*Antigravity（設計）とClaude Code（実行）の連携イメージ*
+```mermaid
+graph TD
+    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
+    classDef gemini fill:#f9d0c4,stroke:#e91e63,stroke-width:2px,color:#000
+    classDef claude fill:#ffd1ba,stroke:#ff5722,stroke-width:2px,color:#000
+    classDef env fill:#f0f0f0,stroke:#cccccc,stroke-width:2px,color:#000
+
+    H[人間<br/>ディレクター]:::human -->|方針決定・レビュー| G[Gemini / Antigravity<br/>Planner: 設計・指揮・チケット作成]:::gemini
+    G <-->|チケット発行 / 結果報告| C[Claude Code<br/>Engineer & QA: ターミナル自律実行]:::claude
+    C <-->|CUI制御・テストスクリプト| U[(Unity プロジェクト)]:::env
+```
+*図：Antigravity（設計）とClaude Code（実行）を組み合わせたDual-Engine Studio体制図*
 
 WISDOMプロジェクトの最大のモチベーションは、**「Antigravity（汎用性の高い設計・指揮）とClaude Code（ターミナル上で自律実行する強力な実装力）を組み合わせること」** でした。
 
@@ -36,8 +46,21 @@ ADVやパズルゲームであればAIでも論理的に作れるかもしれま
 
 ## 中断の決定打：暴走する環境構築と「AIの過信」
 
-![](/images/wisdom_overconfident.png)
-*「いけます！」と崖（エラー）に向かって突っ走るAIと止める人間のイメージ*
+```mermaid
+flowchart TD
+    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
+    classDef gemini fill:#f9d0c4,stroke:#e91e63,stroke-width:2px,color:#000
+    classDef claude fill:#ffd1ba,stroke:#ff5722,stroke-width:2px,color:#000
+    classDef error fill:#ffcccc,stroke:#ff0000,stroke-width:2px,color:#000
+
+    H[人間<br/>複雑なアーキテクチャを要求]:::human --> G
+    G[Gemini<br/>「これでいけます！」<br/>リスク評価を飛ばして無理な設計を承認]:::gemini -->|強行指示| C
+    C[Claude Code<br/>ターミナルで無理やり実装]:::claude --> E
+    E{{環境の崩壊・ゲーム性の破綻}}:::error -->|自己修復を試みる| C
+    E -.->|破綻が拡大| G
+    G -.->|さらに無理な代替案を出す| C
+```
+*図：AIの過信が引き起こす「最悪のループ」構造*
 
 根本的なゲーム性の問題に加え、プロジェクトを凍結させた決定打は「**環境構築コストの重さ**」と「**AIの暴走（過信）**」でした。
 
@@ -57,8 +80,20 @@ ADVやパズルゲームであればAIでも論理的に作れるかもしれま
 
 ## 得られた最大の知見：AIとの「共創」の最適解
 
-![](/images/wisdom_new_philosophy.png)
-*人間が境界線を定め、その中でAIが安全かつ優秀に働くイメージ*
+```mermaid
+graph TD
+    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
+    classDef ai fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#000
+    classDef boundary fill:#e6f3ff,stroke:#66b3ff,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+
+    H[人間]:::human -->|①限界の把握と境界線（バウンダリ）の設定| B
+    H -->|②知識（ルールやコンテキスト）の言語化と注入| B
+    
+    subgraph B [安全な開発環境（バウンダリ）]
+        A[AIエージェント]:::ai -->|③明確な枠組みの中で自発的に思考・実行| Task[タスク完了・クオリティ向上]
+    end
+```
+*図：人間が境界線と知識を定義し、その中でAIが安全に能力を発揮する共創関係*
 
 WISDOMの挑戦を通して、AIによる完全自律型のアクションゲーム制作は現状ではコスト（時間・トークン代）がかかりすぎることが分かりました。
 
