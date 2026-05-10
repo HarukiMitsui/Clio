@@ -25,11 +25,11 @@ flowchart TD
     classDef aiNode fill:#BAE1FF,stroke:#82C8FF,stroke-width:3px,color:#333,rx:20px,ry:20px,font-weight:bold;
     classDef processNode fill:#FFFFBA,stroke:#FFD966,stroke-width:3px,color:#333,rx:20px,ry:20px;
 
-    A(["👤 人間<br>方向性の指示・対話"]) ::: humanNode --> B(["💬 AI<br>コンテキストの読み込み"]) ::: aiNode
-    B --> C(["📝 AI<br>Markdown記事の自動執筆"]) ::: processNode
-    C --> D(["🎨 AI<br>図解・イラストの自動生成"]) ::: processNode
-    D --> E(["👤 人間<br>最終確認とニュアンス調整"]) ::: humanNode
-    E --> F(["🚀 AI<br>GitHubへのPush / Zennへの公開"]) ::: aiNode
+    A(["👤 人間<br/>方向性の指示・対話"]):::humanNode --> B(["💬 AI<br/>コンテキストの読み込み"]):::aiNode
+    B --> C(["📝 AI<br/>Markdown記事の自動執筆"]):::processNode
+    C --> D(["🎨 AI<br/>図解・イラストの自動生成"]):::processNode
+    D --> E(["👤 人間<br/>最終確認とニュアンス調整"]):::humanNode
+    E --> F(["🚀 AI<br/>GitHubへのPush / Zennへの公開"]):::aiNode
 ```
 
 ### 1. 対話とコンテキスト共有
