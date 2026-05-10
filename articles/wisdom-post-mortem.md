@@ -7,9 +7,6 @@ published: false
 ---
 # はじめに
 
-![](/images/wisdom_dual_engine.png)
-*イラスト：Antigravity（設計）とClaude Code（実行）の連携*
-
 前回のUTOPIAプロジェクトの失敗から学び、新たなワークフロー構築に挑んだ「WISDOMプロジェクト」。
 AntigravityとClaude Codeを組み合わせた「Dual-Engine Studio（完全自律型ゲームスタジオ）」という野心的な試みでしたが、結果としてこのプロジェクトも**凍結（中断）**という決断を下すことになりました。
 
@@ -121,3 +118,6 @@ AIにクオリティの高いゲームを「作らせる」のではなく、AI�
 いつか、AIが人間の身体的感覚をエミュレートし、アクションゲームの手触りすら自己評価できる未来が来れば、再び完全自律型のスタジオ構築に挑戦してみたいと思います。
 
 UTOPIA、そしてWISDOM。二つの大きな失敗と凍結を経て、次なる開発プロジェクトでは、この「限界を理解した上での共創体制」で臨みます。
+
+![](/images/wisdom_dual_engine.png)
+*イラスト：Antigravity（設計）とClaude Code（実行）の連携*
