@@ -3,7 +3,7 @@ title: "AIゲーム開発の失敗学：UTOPIAプロジェクトの凍結から�
 emoji: "🧊"
 type: "idea" # tech（技術記事）か idea（アイデア・ポエム）を指定
 topics: ["gamedev", "AI", "postmortem", "ゲーム開発"]
-published: true # true にすると即座に公開されます
+published: false # true にすると即座に公開されます
 ---
 
 # はじめに
@@ -23,6 +23,9 @@ AI（私の場合はRENなどのエージェント）とペアプログラミン
 
 *※ここに、開発中のあなたの「生の声（所感）」が入ります。以下はClioによる代筆・要約のデモです。*
 
+![](/images/utopia_game_feel.png)
+*イラスト：AIに「手触り」を伝える難しさ*
+
 ```mermaid
 flowchart TD
     classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
@@ -30,13 +33,13 @@ flowchart TD
     classDef output fill:#ffff99,stroke:#cccc00,stroke-width:2px,color:#000
     classDef error fill:#f0f0f0,stroke:#ff0000,stroke-dasharray: 5 5,color:#000
 
-    H[人間<br/>「ジャンプのふんわり感を出したい」]:::human -->|プロンプトによる言語化| P(テキストの指示)
-    P -->|指示を解釈| A[AIエージェント<br/>論理・コード変換]:::ai
-    A -->|実装| O[ゲーム内の動作<br/>ただ落下速度が遅いだけのジャンプ]:::output
-    O -->|手触りが違う| E{{環境的・感覚的な因果関係の欠落}}:::error
-    E -.->|何度も修正を指示| H
+    H["🧑‍💻 人間<br/>『ジャンプのふんわり感を<br/>出したい』"]:::human -->|プロンプトによる<br/>言語化| P("📝 テキストの指示")
+    P -->|指示を解釈| A["🤖 AIエージェント<br/>論理・コード変換"]:::ai
+    A -->|実装| O["🎮 ゲーム内の動作<br/>ただ落下速度が<br/>遅いだけのジャンプ"]:::output
+    O -->|手触りが違う| E{"⚠️ 環境的・感覚的な<br/>因果関係の欠落"}:::error
+    E -.->|何度も<br/>修正を指示| H
 ```
-*図：AIに「手触り」を伝える際に発生するコミュニケーションの壁*
+*図解：言語化のプロセスで発生する情報の欠落フロー*
 
 一番の壁になったのは**「ゲームの面白さ（手触り）を言語化してAIに伝えることの難しさ」**でした。
 AIはコードを書くことや、指定されたロジックを実装することは非常に得意です。しかし、「ジャンプした時のふんわり感」や「攻撃が当たった時の気持ちよさ」といった、ゲーム特有の**環境的・感覚的な因果関係（Environmental Causality）**をプロンプトで伝えるのは至難の業でした。
@@ -45,18 +48,21 @@ AIはコードを書くことや、指定されたロジックを実装するこ
 
 # 失敗から得た「次」への教訓：AI開発スタジオの構築へ
 
+![](/images/utopia_ai_studio.png)
+*イラスト：人間とAIが協力して作り上げる新しい開発環境*
+
 ```mermaid
 graph TD
     classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
     classDef system fill:#e6e6fa,stroke:#9370db,stroke-width:2px,color:#000
     classDef agent fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#000
 
-    H[人間<br/>ディレクター/レビュアー]:::human -->|方針決定・最終評価| S((AI開発スタジオ環境)):::system
-    S -->|要件定義・タスク分割| A1[AIプランナー]:::agent
-    S -->|Unity実装・デバッグ| A2[AIエンジニア]:::agent
-    S -->|自動テスト実行| A3[AI QA]:::agent
+    H["🧑‍💻 人間<br/>ディレクター / レビュアー"]:::human -->|方針決定<br/>最終評価| S("🏢 AI開発スタジオ環境"):::system
+    S -->|要件定義<br/>タスク分割| A1["📋 AIプランナー"]:::agent
+    S -->|Unity実装<br/>デバッグ| A2["💻 AIエンジニア"]:::agent
+    S -->|自動テスト<br/>結果報告| A3["🧪 AI QA"]:::agent
 ```
-*図：単体のゲーム開発から、AI同士が連携する「スタジオ環境」の構築へのシフト*
+*図解：単一のゲーム開発からスタジオ環境構築へのシフト*
 
 この凍結を経て、単発のゲーム（3Dアクションゲームなど）を作ることから目標をシフトし、より上位のレイヤーである**「総合的なAIでのゲーム開発スタジオ環境構築」**に着手することにしました。
 
