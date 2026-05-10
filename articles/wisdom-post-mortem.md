@@ -3,7 +3,7 @@ title: "AI完全自律型ゲームスタジオの限界と未来：WISDOMプロ�
 emoji: "🧊"
 type: "tech"
 topics: ["AI", "ゲーム開発", "Claude", "Unity", "個人開発"]
-published: false
+published: true
 ---
 # はじめに
 

@@ -3,7 +3,7 @@ title: "AIゲーム開発の失敗学：UTOPIAプロジェクトの凍結から�
 emoji: "🧊"
 type: "idea" # tech（技術記事）か idea（アイデア・ポエム）を指定
 topics: ["gamedev", "AI", "postmortem", "ゲーム開発"]
-published: false # true にすると即座に公開されます
+published: true # true にすると即座に公開されます
 ---
 
 # はじめに

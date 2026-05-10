@@ -3,7 +3,7 @@ title: "AIと対話しながら技術記事を半自動生成する：プロジ�
 emoji: "✍️"
 type: "tech"
 topics: ["AI", "ゲーム開発", "自動化", "Markdown", "Zenn"]
-published: false
+published: true
 ---
 
 # はじめに
