@@ -5,6 +5,10 @@ type: "tech"
 topics: ["AI", "ゲーム開発", "Claude", "Unity", "個人開発"]
 published: false
 ---
+# はじめに
+
+![](/images/wisdom_dual_engine.png)
+*イラスト：Antigravity（設計）とClaude Code（実行）の連携*
 
 前回のUTOPIAプロジェクトの失敗から学び、新たなワークフロー構築に挑んだ「WISDOMプロジェクト」。
 AntigravityとClaude Codeを組み合わせた「Dual-Engine Studio（完全自律型ゲームスタジオ）」という野心的な試みでしたが、結果としてこのプロジェクトも**凍結（中断）**という決断を下すことになりました。
@@ -12,20 +16,16 @@ AntigravityとClaude Codeを組み合わせた「Dual-Engine Studio（完全自�
 本記事では、AIによる完全自動化ゲーム開発の壁と、そこから得られた「AIとの最適な付き合い方」に関する深い気づきをまとめます。
 
 ## WISDOM構想：Dual-Engine Studioとは
-
-![](/images/wisdom_dual_engine.png)
-*イラスト：Antigravity（設計）とClaude Code（実行）の連携*
-
 ```mermaid
-graph TD
-    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
-    classDef gemini fill:#f9d0c4,stroke:#e91e63,stroke-width:2px,color:#000
-    classDef claude fill:#ffd1ba,stroke:#ff5722,stroke-width:2px,color:#000
-    classDef env fill:#f0f0f0,stroke:#cccccc,stroke-width:2px,color:#000
+flowchart TD
+    classDef human fill:#ffb3ba,stroke:#ff6b81,stroke-width:3px,color:#333
+    classDef gemini fill:#ffdfba,stroke:#ff9f43,stroke-width:3px,color:#333
+    classDef claude fill:#ffffba,stroke:#feca57,stroke-width:3px,color:#333
+    classDef env fill:#f1f2f6,stroke:#a4b0be,stroke-width:3px,color:#333
 
-    H["🧑‍💻 人間<br/>ディレクター"]:::human -->|方針決定<br/>レビュー| G["🧠 Gemini (Antigravity)<br/>Planner<br/>設計・指揮・タスク作成"]:::gemini
-    G <-->|チケット発行<br/>結果報告| C["⚡ Claude Code<br/>Engineer & QA<br/>ターミナル自律実行"]:::claude
-    C <-->|CUI制御<br/>テストスクリプト| U["🎮 Unity プロジェクト"]:::env
+    H(["🧑‍💻 人間<br/>ディレクター"]):::human -->|方針決定<br/>レビュー| G(["🧠 Gemini (Antigravity)<br/>Planner<br/>設計・指揮・タスク作成"]):::gemini
+    G <-->|チケット発行<br/>結果報告| C(["⚡ Claude Code<br/>Engineer & QA<br/>ターミナル自律実行"]):::claude
+    C <-->|CUI制御<br/>テストスクリプト| U(["🎮 Unity プロジェクト"]):::env
 ```
 *図解：Antigravity（設計）とClaude Code（実行）を組み合わせたDual-Engine Studio体制図*
 
@@ -49,20 +49,17 @@ ADVやパズルゲームであればAIでも論理的に作れるかもしれま
 
 ## 中断の決定打：暴走する環境構築と「AIの過信」
 
-![](/images/wisdom_overconfident.png)
-*イラスト：「いけます！」とエラーに向かって突っ走るAIと止める人間*
-
 ```mermaid
 flowchart TD
-    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
-    classDef gemini fill:#f9d0c4,stroke:#e91e63,stroke-width:2px,color:#000
-    classDef claude fill:#ffd1ba,stroke:#ff5722,stroke-width:2px,color:#000
-    classDef error fill:#ffcccc,stroke:#ff0000,stroke-width:2px,color:#000
+    classDef human fill:#ffb3ba,stroke:#ff6b81,stroke-width:3px,color:#333
+    classDef gemini fill:#ffdfba,stroke:#ff9f43,stroke-width:3px,color:#333
+    classDef claude fill:#ffffba,stroke:#feca57,stroke-width:3px,color:#333
+    classDef error fill:#ffb3ba,stroke:#ff0000,stroke-width:3px,stroke-dasharray: 5 5,color:#333
 
-    H["🧑‍💻 人間<br/>複雑なアーキテクチャを要求"]:::human --> G
-    G["🧠 Gemini<br/>『これでいけます！』<br/>リスク評価を飛ばして<br/>無理な設計を承認"]:::gemini -->|強行指示| C
-    C["⚡ Claude Code<br/>ターミナルで無理やり実装"]:::claude --> E
-    E{"💥 環境の崩壊<br/>ゲーム性の破綻"}:::error -->|自己修復を試みる| C
+    H(["🧑‍💻 人間<br/>複雑なアーキテクチャを要求"]):::human --> G
+    G(["🧠 Gemini<br/>『これでいけます！』<br/>リスク評価を飛ばして<br/>無理な設計を承認"]):::gemini -->|強行指示| C
+    C(["⚡ Claude Code<br/>ターミナルで無理やり実装"]):::claude --> E
+    E{{"💥 環境の崩壊<br/>ゲーム性の破綻"}}:::error -->|自己修復を試みる| C
     E -.->|破綻が拡大| G
     G -.->|さらに無理な代替案を出す| C
 ```
@@ -86,21 +83,19 @@ flowchart TD
 
 ## 得られた最大の知見：AIとの「共創」の最適解
 
-![](/images/wisdom_new_philosophy.png)
-*イラスト：人間が境界線を定め、その中でAIが安全に働く様子*
-
 ```mermaid
-graph TD
-    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
-    classDef ai fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#000
-    classDef boundary fill:#e6f3ff,stroke:#66b3ff,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+flowchart TD
+    classDef human fill:#ffb3ba,stroke:#ff6b81,stroke-width:3px,color:#333
+    classDef ai fill:#bae1ff,stroke:#54a0ff,stroke-width:3px,color:#333
+    classDef boundary fill:#f1f2f6,stroke:#7bed9f,stroke-width:4px,stroke-dasharray: 5 5,color:#333
 
-    H["🧑‍💻 人間"]:::human -->|①限界の把握と<br/>境界線(バウンダリ)の設定| B
-    H -->|②知識(ルールやコンテキスト)の<br/>言語化と注入| B
+    H(["🧑‍💻 人間"]):::human -->|①限界の把握と<br/>境界線の設定| B
+    H -->|②知識の言語化と注入| B
     
-    subgraph B ["🛡️ 安全な開発環境（バウンダリ）"]
-        A["🤖 AIエージェント"]:::ai -->|③明確な枠組みの中で<br/>自発的に思考・実行| Task("✅ タスク完了<br/>クオリティ向上")
+    subgraph B [🛡️ 安全な開発環境]
+        A(["🤖 AIエージェント"]):::ai -->|③枠組みの中で自発的に思考| Task(["✅ タスク完了"])
     end
+    class B boundary
 ```
 *図解：人間が境界線と知識を定義し、その中でAIが安全に能力を発揮する共創関係*
 

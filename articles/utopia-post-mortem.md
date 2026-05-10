@@ -8,6 +8,9 @@ published: false # true にすると即座に公開されます
 
 # はじめに
 
+![](/images/utopia_ai_studio.png)
+*イラスト：人間とAIが協力して作り上げる新しい開発環境*
+
 先日、AIエージェントと共同で進めていたゲーム開発プロジェクト「UTOPIA」を正式に凍結（終了）することに決定しました。
 
 この記事では、AI主導のワークフローでゲームを作ろうとした際に**「何が壁になったのか」「なぜ期待を満たせなかったのか」**というポストモーテム（事後分析）をまとめます。
@@ -23,20 +26,18 @@ AI（私の場合はRENなどのエージェント）とペアプログラミン
 
 *※ここに、開発中のあなたの「生の声（所感）」が入ります。以下はClioによる代筆・要約のデモです。*
 
-![](/images/utopia_game_feel.png)
-*イラスト：AIに「手触り」を伝える難しさ*
-
 ```mermaid
 flowchart TD
-    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
-    classDef ai fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#000
-    classDef output fill:#ffff99,stroke:#cccc00,stroke-width:2px,color:#000
-    classDef error fill:#f0f0f0,stroke:#ff0000,stroke-dasharray: 5 5,color:#000
+    %% ポップなテーマ設定
+    classDef human fill:#ffb3ba,stroke:#ff6b81,stroke-width:3px,color:#333
+    classDef ai fill:#bae1ff,stroke:#54a0ff,stroke-width:3px,color:#333
+    classDef output fill:#ffffba,stroke:#feca57,stroke-width:3px,color:#333
+    classDef error fill:#ffdfba,stroke:#ff9f43,stroke-width:3px,stroke-dasharray: 5 5,color:#333
 
-    H["🧑‍💻 人間<br/>『ジャンプのふんわり感を<br/>出したい』"]:::human -->|プロンプトによる<br/>言語化| P("📝 テキストの指示")
-    P -->|指示を解釈| A["🤖 AIエージェント<br/>論理・コード変換"]:::ai
-    A -->|実装| O["🎮 ゲーム内の動作<br/>ただ落下速度が<br/>遅いだけのジャンプ"]:::output
-    O -->|手触りが違う| E{"⚠️ 環境的・感覚的な<br/>因果関係の欠落"}:::error
+    H(["🧑‍💻 人間<br/>『ジャンプのふんわり感を<br/>出したい』"]):::human -->|プロンプトによる<br/>言語化| P(["📝 テキストの指示"])
+    P -->|指示を解釈| A(["🤖 AIエージェント<br/>論理・コード変換"]):::ai
+    A -->|実装| O(["🎮 ゲーム内の動作<br/>ただ落下速度が<br/>遅いだけのジャンプ"]):::output
+    O -->|手触りが違う| E{{"⚠️ 環境的・感覚的な<br/>因果関係の欠落"}}:::error
     E -.->|何度も<br/>修正を指示| H
 ```
 *図解：言語化のプロセスで発生する情報の欠落フロー*
@@ -48,19 +49,16 @@ AIはコードを書くことや、指定されたロジックを実装するこ
 
 # 失敗から得た「次」への教訓：AI開発スタジオの構築へ
 
-![](/images/utopia_ai_studio.png)
-*イラスト：人間とAIが協力して作り上げる新しい開発環境*
-
 ```mermaid
-graph TD
-    classDef human fill:#ff9999,stroke:#cc0000,stroke-width:2px,color:#000
-    classDef system fill:#e6e6fa,stroke:#9370db,stroke-width:2px,color:#000
-    classDef agent fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#000
+flowchart TD
+    classDef human fill:#ffb3ba,stroke:#ff6b81,stroke-width:3px,color:#333
+    classDef system fill:#e8dff5,stroke:#9b59b6,stroke-width:3px,color:#333
+    classDef agent fill:#bae1ff,stroke:#54a0ff,stroke-width:3px,color:#333
 
-    H["🧑‍💻 人間<br/>ディレクター / レビュアー"]:::human -->|方針決定<br/>最終評価| S("🏢 AI開発スタジオ環境"):::system
-    S -->|要件定義<br/>タスク分割| A1["📋 AIプランナー"]:::agent
-    S -->|Unity実装<br/>デバッグ| A2["💻 AIエンジニア"]:::agent
-    S -->|自動テスト<br/>結果報告| A3["🧪 AI QA"]:::agent
+    H(["🧑‍💻 人間<br/>ディレクター / レビュアー"]):::human -->|方針決定<br/>最終評価| S(["🏢 AI開発スタジオ環境"]):::system
+    S -->|要件定義<br/>タスク分割| A1(["📋 AIプランナー"]):::agent
+    S -->|Unity実装<br/>デバッグ| A2(["💻 AIエンジニア"]):::agent
+    S -->|自動テスト<br/>結果報告| A3(["🧪 AI QA"]):::agent
 ```
 *図解：単一のゲーム開発からスタジオ環境構築へのシフト*
 
